@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">URCodingChallenge</string>
+    <string name="owner_avatar">owner avatar</string>
+    <string name="no_data_available">No data available</string>
+    <string name="stars">stars</string>
 </resources>
