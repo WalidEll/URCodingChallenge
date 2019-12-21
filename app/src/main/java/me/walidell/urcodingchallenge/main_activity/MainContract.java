@@ -1,6 +1,9 @@
 package me.walidell.urcodingchallenge.main_activity;
 
 
+import java.util.ArrayList;
+
+import me.walidell.urcodingchallenge.model.Repository;
 import me.walidell.urcodingchallenge.model.RepositoryList;
 
 public interface MainContract {
@@ -14,6 +17,8 @@ public interface MainContract {
 
         void onRefresh();
 
+        void onLoadMore();
+
         void requestDataFromServer();
 
     }
@@ -23,7 +28,8 @@ public interface MainContract {
 
         void hideProgress();
 
-        void setDataToRecyclerView(RepositoryList repositories);
+        void setDataToRecyclerView(ArrayList<Repository> repositories);
+        void updateData(ArrayList<Repository> repositories);
 
         void onResponseFailure(Throwable throwable);
 
@@ -35,6 +41,6 @@ public interface MainContract {
             void onFailure(Throwable t);
         }
 
-        void getTrendingRepositories(OnFinishedListener onFinishedListener);
+        void getTrendingRepositories(int page,OnFinishedListener onFinishedListener);
     }
 }

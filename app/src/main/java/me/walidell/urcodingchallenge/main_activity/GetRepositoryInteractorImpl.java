@@ -14,11 +14,11 @@ import retrofit2.Response;
 
 public class GetRepositoryInteractorImpl implements MainContract.GetRepositoryIntractor {
     @Override
-    public void getTrendingRepositories(final OnFinishedListener onFinishedListener) {
+    public void getTrendingRepositories(int page,final OnFinishedListener onFinishedListener) {
         RepositoryService repositoryService = RetrofitInstance.getRetrofitInstance().create(RepositoryService.class);
 
         String query = "created:>" + getLastMonthDate();
-        Call<RepositoryList> repositoryListCall = repositoryService.search(query,"stars","desc",1);
+        Call<RepositoryList> repositoryListCall = repositoryService.search(query,"stars","desc",page);
 
         /*Log the URL called*/
         Log.wtf("URL Called", repositoryListCall.request().url() + "");
