@@ -3,7 +3,7 @@ package me.walidell.urcodingchallenge.main_activity;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 import me.walidell.urcodingchallenge.config.RetrofitInstance;
 import me.walidell.urcodingchallenge.model.RepositoryList;
@@ -16,12 +16,11 @@ public class GetRepositoryInteractorImpl implements MainContract.GetRepositoryIn
     @Override
     public void getTrendingRepositories(final OnFinishedListener onFinishedListener) {
         RepositoryService repositoryService = RetrofitInstance.getRetrofitInstance().create(RepositoryService.class);
-        Date date = new Date();
-        String strDate = new SimpleDateFormat("created:>yyyy-MM-dd").format(date);
-        String query = "created:>"+strDate;
+
+        String query = "created:>" + getLastMonthDate();
         Call<RepositoryList> repositoryListCall = repositoryService.search(query,"stars","desc",1);
 
-        /**Log the URL called*/
+        /*Log the URL called*/
         Log.wtf("URL Called", repositoryListCall.request().url() + "");
 
         repositoryListCall.enqueue(new Callback<RepositoryList>() {
@@ -32,10 +31,18 @@ public class GetRepositoryInteractorImpl implements MainContract.GetRepositoryIn
 
             @Override
             public void onFailure(Call<RepositoryList> call, Throwable t) {
+                Log.wtf("URL Called", t + "");
                 onFinishedListener.onFailure(t);
             }
         });
 
+    }
+
+    private String getLastMonthDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -1);
+        return formatter.format(calendar.getTime());
     }
 
 }

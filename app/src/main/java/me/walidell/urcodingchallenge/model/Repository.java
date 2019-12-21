@@ -1,5 +1,7 @@
 package me.walidell.urcodingchallenge.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,5 +14,6 @@ public class Repository {
     private String name;
     private String description;
     private Owner owner;
+    @SerializedName("stargazers_count")
     private int stars;
 }
