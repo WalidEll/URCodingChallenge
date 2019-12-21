@@ -18,15 +18,16 @@ You'll be fetching the sorted JSON data directly from the Github API (Github API
 
 <h2>Libraries Used</h2>
 
-1.Retrofit
-https://github.com/square/retrofi
-2.Picasso
-A powerful image downloading and caching library for Android
-https://github.com/square/picasso
-3.Lombok
+1. Retrofit:  
+A type-safe HTTP client for Android and Java . 
+- https://github.com/square/retrofi 
+2. Picasso:  
+A powerful image downloading and caching library for Android . 
+- https://github.com/square/picasso  
+3. Lombok: 
 Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
-Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more.
-https://projectlombok.org
+Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more . 
+- https://projectlombok.org
 
 <h3>Building using Android Studio...</h3>
 
